@@ -4,6 +4,7 @@ import { authService } from "../../application/services";
 import { log } from "../../logger";
 
 import * as authRoutes from "./routes/auth.routes";
+import * as componentRoutes from "./routes/component.routes";
 import * as eventRoutes from "./routes/event.routes";
 import * as taskRoutes from "./routes/task.routes";
 
@@ -28,6 +29,9 @@ app.post("/auth/login", authRoutes.loginRoute);
 app.post("/admin/agents", authRoutes.createAgentRoute);
 app.get("/admin/agents", authRoutes.listAgentsRoute);
 app.get("/admin/agents/:id", authRoutes.getAgentRoute);
+app.post("/admin/components", componentRoutes.createComponentRoute);
+app.get("/admin/components", componentRoutes.listComponentsRoute);
+app.delete("/admin/components/:id", componentRoutes.deleteComponentRoute);
 
 const agentAuthMiddleware: MiddlewareHandler = async (c, next) => {
 	const authHeader = c.req.header("Authorization");

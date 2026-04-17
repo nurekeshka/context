@@ -21,6 +21,10 @@ export const log = {
 		login: (id: string, success: boolean) => logger.info(`agent login: ${id} (${success ? "success" : "failure"})`),
 		retrieved: (id: string) => logger.info(`retrieving agent: ${id}`),
 	},
+	component: {
+		created: (name: string, id: string) => logger.info(`creating component: ${name} (${id})`),
+		deleted: (id: string) => logger.info(`deleting component: ${id}`),
+	},
 	db: (url: string) => logger.info(`database connection is open to: ${url}`),
 	event: {
 		created: (taskId: string, type: string, id: string) =>
